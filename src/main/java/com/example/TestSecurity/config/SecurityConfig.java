@@ -21,17 +21,17 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public RoleHierarchy roleHierarchy() {
-
-        RoleHierarchyImpl hierarchy = new RoleHierarchyImpl();
-
-        // C는 B보다 권한이 높고, B는 A보다 권한이 높다.
-        hierarchy.setHierarchy("ROLE_C > ROLE_B\n" +
-                "ROLE_B > ROLE_A");
-
-        return hierarchy;
-    }
+//    @Bean
+//    public RoleHierarchy roleHierarchy() {
+//
+//        RoleHierarchyImpl hierarchy = new RoleHierarchyImpl();
+//
+//        // C는 B보다 권한이 높고, B는 A보다 권한이 높다.
+//        hierarchy.setHierarchy("ROLE_C > ROLE_B\n" +
+//                "ROLE_B > ROLE_A");
+//
+//        return hierarchy;
+//    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
@@ -60,8 +60,8 @@ public class SecurityConfig {
                         .permitAll()
                 );
 
-        // http
-        //        .csrf((auth) -> auth.disable()); // csrf토큰을 보내지 않으면 로그인이 진행되지 않기 때문에 잠시 disable
+//         http
+//                .csrf((auth) -> auth.disable()); // csrf토큰을 보내지 않으면 로그인이 진행되지 않기 때문에 잠시 disable
 
         http
                 .sessionManagement((auth) -> auth
