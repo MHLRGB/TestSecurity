@@ -2,34 +2,34 @@ package com.example.TestSecurity.controller;
 
 import com.example.TestSecurity.dto.JoinDTO;
 import com.example.TestSecurity.service.JoinService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class JoinController {
+    private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
     @Autowired
     private JoinService joinService; // 현재 필드 주입으로 선언했지만, 생성자 주입 방식 권고
 
+//    @GetMapping("/join")
+//    public String joinP() {
+//
+//        return "join";
+//    }
 
-    @GetMapping("/join")
-    public String joinP() {
-
-        return "join";
-    }
-
-
-    @PostMapping("/joinProc")
+    @GetMapping("/joinProc")
     public String joinProcess(JoinDTO joinDTO) {
-
+        log.info("joinController");
         System.out.println(joinDTO.getUsername());
 
         joinService.joinProcess(joinDTO);
 
 
-        return "redirect:/login";
+        return "redirect:/test";
     }
 }
 
