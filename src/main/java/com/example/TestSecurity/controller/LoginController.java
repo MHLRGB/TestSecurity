@@ -1,16 +1,15 @@
 package com.example.TestSecurity.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class LoginController {
 
-    @GetMapping("/login")
-    public String loginP() {
-
-        return "login";
-    }
+//    @GetMapping("/login")
+//    public String loginP() {
+//
+//        return "login";
+//    }
 }
 
 // CustomeUserDetailsService는 DB로부터 특정 username에 대한 데이터를 들고 오고,
