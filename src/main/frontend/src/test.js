@@ -8,7 +8,7 @@ const Test = () => {
     const [hello, setHello] = useState('');
 
     useEffect(() => {
-        axios.get('/login')
+        axios.post('/login')
             .then((res) => {
                 setHello(res.data);
             })

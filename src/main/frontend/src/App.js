@@ -4,6 +4,8 @@ import Login from './login.js';
 import Join from './join.js';
 import Test from './test.js';
 import Admin from './adimn.js';
+import Main from './main.js';
+import Common from './common.js';
 
 
 const App = () => {
@@ -14,7 +16,8 @@ const App = () => {
                 <Route path="/join" element={<Join />} />
                 <Route path="/test" element={<Test />} />
                 <Route path="/admin" element={<Admin />} />
-                <Route path="/"/>
+                <Route path="/common" element={<Common />} />
+                <Route path="/" element={<Main />}/>
             </Routes>
         </div>
     );
