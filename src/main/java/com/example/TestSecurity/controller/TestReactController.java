@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestReactController {
 
-    @PostMapping("/login")
+    @PostMapping("/test")
     public String hello() {
         return "스프링에서 보낸 데이터";
     }

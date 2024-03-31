@@ -6,7 +6,7 @@ import Test from './test.js';
 import Admin from './adimn.js';
 import Main from './main.js';
 import Common from './common.js';
-
+import axios from 'axios';
 
 const App = () => {
     return (

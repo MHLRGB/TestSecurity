@@ -1,5 +1,6 @@
 package com.example.TestSecurity.config;
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -7,11 +8,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.List;
 
 
 @Configuration
@@ -24,20 +20,25 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+//        CsrfTokenRequestAttributeHandler requestHandler = new CsrfTokenRequestAttributeHandler();
+//        requestHandler.setCsrfRequestAttributeName("_csrf");
 
         // CORS 오류 대응
-        http.cors(httpSecurityCorsConfigurer ->
-                httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource())
-        );
+//        http.cors(httpSecurityCorsConfigurer ->
+//                httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource())
+//        );
 //
         http
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers(HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico", "/rest",
-                                "/test","/login","/join","/joinProc","/", "/**")
+                        .requestMatchers( HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico", "/rest",
+                                "/test","/login","/join","/joinProc","/common","/")
                         .permitAll()
                         .requestMatchers("/admin").hasRole("ADMIN")
+                        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .anyRequest().authenticated()
 
                 );
@@ -47,19 +48,27 @@ public class SecurityConfig {
                         .successHandler(new LoginSuccessHandler())
                         .permitAll()
                 );
-//
+
         http
                 .csrf((auth) -> auth.disable()); // csrf토큰을 보내지 않으면 로그인이 진행되지 않기 때문에 잠시 disable
-//
-        http
-                .sessionManagement((auth) -> auth
-                        .sessionFixation().changeSessionId() // 세션 고정 보호. 로그인 시 동일한 세션을 유지하지만, 발급되는 id를 바꿔줌. 보안용 설정
-                        .maximumSessions(1) // 하나의 아이디에서 동시 접속 중복 로그인 수
-                        .maxSessionsPreventsLogin(true)
-                        // 위의 값을 초과했을 경우
-                        // true : 새로운 로그인 차단
-                        // false : 기존 로그인 세션 하나 삭제 후 새로운 로그인 진행
-                        .expiredUrl("/"));
+
+        // csrf 관련 로직
+//        http
+//                .csrf(csrf->csrf
+//                .csrfTokenRequestHandler(requestHandler)
+//                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+//                .ignoringRequestMatchers("/", "/login", "/logout", "/join")
+//        );
+
+//        http
+//                .sessionManagement((auth) -> auth
+//                        .sessionFixation().changeSessionId() // 세션 고정 보호. 로그인 시 동일한 세션을 유지하지만, 발급되는 id를 바꿔줌. 보안용 설정
+//                        .maximumSessions(1) // 하나의 아이디에서 동시 접속 중복 로그인 수
+//                        .maxSessionsPreventsLogin(true)
+//                        // 위의 값을 초과했을 경우
+//                        // true : 새로운 로그인 차단
+//                        // false : 기존 로그인 세션 하나 삭제 후 새로운 로그인 진행
+//                        .expiredUrl("/"));
 
 
 
@@ -67,21 +76,21 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // CORS 오류 대응
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration corsConfiguration = new CorsConfiguration();
-
-        corsConfiguration.setAllowedOriginPatterns(List.of("*"));
-        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"));
-        corsConfiguration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
-        corsConfiguration.setAllowCredentials(true);
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", corsConfiguration); // 모든 경로에 대해서 CORS 설정을 적용
-
-        return source;
-    }
+//    // CORS 오류 대응
+//    @Bean
+//    public CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration corsConfiguration = new CorsConfiguration();
+//
+//        corsConfiguration.setAllowedOriginPatterns(List.of("*"));
+//        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"));
+//        corsConfiguration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
+//        corsConfiguration.setAllowCredentials(true);
+//
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", corsConfiguration); // 모든 경로에 대해서 CORS 설정을 적용
+//
+//        return source;
+//    }
 
 
 }
