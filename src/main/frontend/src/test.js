@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+
 import { Route, Routes } from 'react-router-dom';
 //import axiosInstance from "/axiosInstance";
 
@@ -8,7 +9,7 @@ const Test = () => {
     const [hello, setHello] = useState('');
 
     useEffect(() => {
-        axios.get('/login')
+        axios.post('/test')
             .then((res) => {
                 setHello(res.data);
             })
