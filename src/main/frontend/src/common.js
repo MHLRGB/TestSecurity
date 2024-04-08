@@ -1,53 +1,44 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+
 
 const Common = () => {
     const [data, setData] = useState('');
 
-    const [responseData, setResponseData] = useState();
+    const [responseData, setResponseData] = useState('');
 
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
-
-    // const fetchData = async () => {
-    //   try {
-    //     const response = await fetch('/common');
-    //     const data = await response.text();
-    //     console.log('Received data from server:', data);
-  
-    //     // 서버로부터 받은 데이터를 상태로 설정
-    //     setResponseData(data);
-  
-    //     // 필요에 따라 추가적인 처리를 수행할 수 있습니다.
-    //   } catch (error) {
-    //     console.error('Error fetching data:', error);
-    //   }
-    // };
     const fetchData = async () => {
-      axios
-      .get("/welcome")
-      .then((res) => {
-        console.log('fetchData 함수:', res.data);
-        setResponseData(JSON.stringify(res.data));
-      })
-      .catch((err) => {
-          console.log(err);
-      });
+      try {
+        const response = await fetch('/welcome');
+        const data = await response.text();
+        console.log('Received data from server:', data);
+  
+        // 서버로부터 받은 데이터를 상태로 설정
+        setResponseData(data);
+  
+        // 필요에 따라 추가적인 처리를 수행할 수 있습니다.
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    const handleButtonClick = () => {
+      // 클릭 이벤트가 발생하면 서버로부터 데이터를 다시 요청
+      fetchData();
     };
 
-    
     const sendData = async () => {
       try {
-        const response = await axios.post('/common', { data }, {
+        const response = await fetch('/common', {
+          method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
-          }
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ yourData: data }),
         });
-    
+        
         // 서버로부터 응답을 처리하거나 확인합니다.
-        console.log('sendData 함수:', response.data);
+        const responseData = await response.json();
+        console.log(responseData);
       } catch (error) {
         console.error('Error:', error);
       }
@@ -64,9 +55,10 @@ const Common = () => {
       />
       <button onClick={sendData}>데이터 보내기</button>
       <br />
-      <button onClick={fetchData}>데이터 받기 </button>
+      <button onClick={handleButtonClick}>데이터 받기 </button>
       <div>
-        <p>Received Data: {responseData}</p>
+        {/* 서버로부터 받은 데이터를 출력 */}
+        {responseData && <p>Received Data: {responseData}</p>}
       </div>
 
         </>
