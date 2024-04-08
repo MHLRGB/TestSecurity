@@ -5,7 +5,7 @@ const Main = () => {
     const [auth, setAuth] = useState('');
 
     useEffect(() => {
-        axios.post('/login')
+        axios.post('/test')
             .then((res) => {
                 setAuth(res.data);
             })
