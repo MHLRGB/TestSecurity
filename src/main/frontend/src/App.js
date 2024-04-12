@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Login from './login.js';
-import Join from './join.js';
+import Login from './Login.js';
+import Join from './Join.js';
 import Test from './test.js';
-import Admin from './adimn.js';
-import Main from './main.js';
+import Admin from './Adimn.js';
+import Main from './Main.js';
 import Common from './common.js';
 import axios from 'axios';
 
