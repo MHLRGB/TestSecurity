@@ -24,11 +24,12 @@ public class JoinService {
 
     public void joinProcess(JoinDTO joinDTO) {
 
-        log.info("joinProcess");
+        log.info("joinService : joinProcess");
 
         //db에 이미 동일한 username을 가진 회원이 존재하는지?
         boolean isUser = userRepository.existsByUsername(joinDTO.getUsername());
         if (isUser) {
+            log.info("joinProcess : duplicate ID.");
             return;
         }
 
@@ -41,5 +42,15 @@ public class JoinService {
 
 
         userRepository.save(data);
+    }
+
+    public boolean checkId(String username) {
+
+        boolean isUser2 = userRepository.existsByUsername(username);
+
+        log.info("joinService : checkId : " + isUser2);
+
+        //db에 이미 동일한 username을 가진 회원이 존재하는지?
+        return userRepository.existsByUsername(username);
     }
 }

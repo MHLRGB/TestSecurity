@@ -28,12 +28,12 @@ const Common = () => {
 
     const sendData = async () => {
       try {
-        const response = await fetch('/common', {
+        const response = await fetch('/commonsend', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ yourData: data }),
+          body: JSON.stringify({ data }),
         });
         
         // 서버로부터 응답을 처리하거나 확인합니다.

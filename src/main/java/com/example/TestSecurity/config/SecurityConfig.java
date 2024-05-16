@@ -35,9 +35,13 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers( HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico", "/rest",
-                                "/test","/login","/join","/joinProc","/common","/welcome","/")
+                                "/test","/login","/join","/joinProc","/common","/welcome","/commonsend","/")
                         .permitAll()
+
                         .requestMatchers("/index.html").permitAll()
+
+                        .requestMatchers(HttpMethod.POST,"/commonsend","/checkid").permitAll()
+
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .anyRequest().authenticated()

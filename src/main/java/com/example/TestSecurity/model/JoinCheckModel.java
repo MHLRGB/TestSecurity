@@ -5,9 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class TestModel {
+public class JoinCheckModel {
 
-    public String id;
-    public String name;
-
+    public boolean checkid;
 }

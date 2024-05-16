@@ -1,5 +1,6 @@
 package com.example.TestSecurity.controller;
 
+
 import com.example.TestSecurity.model.TestModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CommonController {
 
-    @PostMapping("/common")
+    @PostMapping("/commonsend")
     public TestModel handleCommonPostData(@RequestBody String data) {
 
         TestModel model1 = new TestModel();

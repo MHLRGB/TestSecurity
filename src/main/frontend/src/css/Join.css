@@ -1,0 +1,84 @@
+/* Sign.css */
+
+/* 네비게이션 바 스타일 */
+.Sign nav ul {
+    list-style-type: none; /* 목록 마커 제거 */
+    padding: 0; /* 패딩 제거 */
+    margin: 0; /* 마진 제거 */
+    background-color: rgb(0, 0, 0); /* 배경 색상 지정 */
+    overflow: hidden; /* 넘치는 컨텐츠 숨김 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    
+  }
+  
+  /* 네비게이션 바 링크 스타일 */
+  .Sign nav li {
+    display: inline-block; /* 인라인 블록 요소로 표시 */
+  }
+  
+  .Sign nav li a {
+    display: block; /* 블록 요소로 표시 */
+    color: white; /* 텍스트 색상 지정 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    padding: 15px 20px; /* 패딩 추가 */
+    text-decoration: none; /* 링크에 밑줄 제거 */
+  }
+  
+  .Sign nav li a:hover {
+    background-color: #555; /* 호버 시 배경 색상 변경 */
+  }
+  
+  /* 회원가입 상자 스타일 */
+  .Sign .signup-box {
+    margin: auto; /* 가운데 정렬을 위해 자동 마진 추가 */
+    width: 400px; /* 너비 지정 */
+    padding: 50px; /* 안쪽 여백 추가 */
+    border: 1px solid #000000; /* 테두리 추가 */
+    border-radius: 5px; /* 테두리 둥글게 만듦 */
+    margin-top: 20px; /* 위쪽 여백 추가 */
+    text-align: left; /* 텍스트를 왼쪽 정렬 */
+  }
+  
+  /* 입력란 스타일 */
+  .Sign .input-group {
+    margin-bottom: 10px; /* 아래쪽 여백 추가 */
+  }
+  
+  .Sign input[type="text"],
+  .Sign input[type="password"] {
+    width: calc(100% - 20px); /* 입력란 너비 조정 */
+    padding: 10px; 
+    margin-bottom: 10px; 
+  }
+  
+  /* 버튼 스타일 */
+  .Sign button {
+    width: 30%; /* 너비 100%로 설정 */
+    padding: 10px; /* 안쪽 여백 추가 */
+    cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능한 것으로 표시 */
+  }
+  
+/* 반응형 디자인 */
+@media screen and (max-width: 480px) {
+    .nav ul li:first-child {
+      margin-left: 5px;
+      transition: margin-left 0.3s ease;
+    }
+  
+    .nav ul li a {
+      padding: 12px 6px;
+      font-size: 14px;
+      transition: padding 0.3s ease, font-size 0.3s ease;
+    }
+  
+    .content {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .signup-box {
+      width: 80%;
+      transition: width 0.3s ease;
+    }
+  }
+  
