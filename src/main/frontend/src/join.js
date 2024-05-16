@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
 import './css/Join.css';
 import axios from "axios";
 
-=======
+
 //import axiosInstance from "/axiosInstance";
 import './css/Join.css';
-<<<<<<< HEAD
->>>>>>> 7f74c8e883b0d237778cb16110bade001a3b26cf
-=======
->>>>>>> 7f74c8e883b0d237778cb16110bade001a3b26cf
+
 const Join = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -17,7 +13,7 @@ const Join = () => {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
 
-<<<<<<< HEAD
+
     const [idMessage, setIdMessage] = useState('');
     const [usernameReadOnly, setUsernameReadOnly] = useState(false);
 
@@ -83,23 +79,8 @@ const Join = () => {
         console.log('회원가입 성공!');
     };
 
-=======
->>>>>>> 7f74c8e883b0d237778cb16110bade001a3b26cf
-    const [username, setUsername1] = useState('');
-    const [password, setPassword1] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-  
-  
-    const handleSignUp = () => {
-      console.log('Sign up button clicked');
-    };
-    
     return (
         <div className="Sign">
-<<<<<<< HEAD
-<<<<<<< HEAD
             <nav>
                 <ul>
                     <li><a href="#">HOME</a></li>
@@ -146,80 +127,13 @@ const Join = () => {
                         />
                     </div>
                     <div className="button-group">
-                        <button type="button" onClick={handleSignUp}>회원가입</button>
+                        <button type="submit" onClick={handleSignUp}>회원가입</button>
                     </div>
                 </form>
             </div>
         </div>
-=======
-=======
->>>>>>> 7f74c8e883b0d237778cb16110bade001a3b26cf
-        <nav>
-          <ul>
-            <li><a href="#">HOME</a></li>
-          </ul>
-        </nav>
-        <div className="signup-box">
-        <h2 className="signup">회원가입</h2>
-        <form action="/joinProc" method="get" name="joinForm">
-            <div className="input-group">
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="아이디"
-                    value={username}
-                    onChange={(e) => setUsername1(e.target.value)}
-                />
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="비밀번호"
-                    value={password}
-                    onChange={(e) => setPassword1(e.target.value)}
-                />
-                <input
-                    type="password"
-                    placeholder="비밀번호 확인"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="이메일"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="전화번호"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                />
-                </div>
-                <div className="button-group">
-                <button onClick={handleSignUp}>회원가입</button>
-            </div>
-        </form>
-        </div>
-      </div>
-<<<<<<< HEAD
->>>>>>> 7f74c8e883b0d237778cb16110bade001a3b26cf
-=======
->>>>>>> 7f74c8e883b0d237778cb16110bade001a3b26cf
     );
 };
 
 export default Join;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 7f74c8e883b0d237778cb16110bade001a3b26cf
 
-{/* <input type="text" name="username" placeholder="Username"/>
-<input type="password" name="password" placeholder="Password"/>
-<input type="submit" value="Join"/> */}
-<<<<<<< HEAD
->>>>>>> 7f74c8e883b0d237778cb16110bade001a3b26cf
-=======
->>>>>>> 7f74c8e883b0d237778cb16110bade001a3b26cf
