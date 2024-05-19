@@ -33,6 +33,6 @@ public class MainController {
         model.addAttribute("id", id);
         model.addAttribute("role", role);
 
-        return id;
+        return role;
     }
 }
